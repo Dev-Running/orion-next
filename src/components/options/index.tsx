@@ -7,7 +7,7 @@ import { TfiWrite } from 'react-icons/tfi'
 export const OptionsDashboard = () => {
   const { push } = useRouter()
   return (
-    <section className="w-full z-50 flex justify-evenly items-center gap-10 gap-y-24  flex-wrap">
+    <section className="w-full z-50 flex justify-evenly items-center gap-10  gap-y-24  flex-wrap">
       <Link href="/dashboard/courses">
         <div className="h-52 group w-72 rounded-sm    hover:cursor-pointer  transition-all hover:-translate-y-2 duration-300 flex flex-col justify-center items-center">
           <MdPlayLesson className="text-dark text-7xl group-hover:text-primary transition-colors" />
