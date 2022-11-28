@@ -1,13 +1,15 @@
 import { Avatar } from '@chakra-ui/react'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { BsFillCalendarWeekFill } from 'react-icons/bs'
 import { FaUserTag } from 'react-icons/fa'
 import { IoIosArrowBack, IoMdSettings } from 'react-icons/io'
 import { MdOutlineExitToApp, MdPlayLesson } from 'react-icons/md'
 import { TbActivity, TbApiApp } from 'react-icons/tb'
+import { MainContext } from '../../contexts/main'
 
 export const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(true)
+  const { isOpen, setIsOpen } = useContext(MainContext)
+  const [active, setActive] = useState('overview')
   return (
     <aside
       className={` ${
@@ -21,7 +23,7 @@ export const Sidebar = () => {
               isOpen
                 ? 'rotate-12 ml-0 -mr-0 absolute left-16'
                 : 'absolute left-6 rotate-0  '
-            } w-8 h-8 bg-primary rounded-sm flex items-center text-2xl font-bold text-dark justify-center transition-all duration-300  `}
+            } w-8 h-8 pt-[0.1rem] bg-primary rounded-sm flex items-center text-2xl font-bold text-dark justify-center transition-all duration-300  `}
           >
             O
           </div>
@@ -54,11 +56,14 @@ export const Sidebar = () => {
 
         <ul className="w-full flex flex-col gap-4">
           <li
+            onClick={(e) => setActive('overview')}
             className={` ${
               isOpen
                 ? 'px-16 after:w-3  '
-                : 'px-7 after:left-[4.75rem] after:w-1 '
-            } w-full  h-12 items-center flex gap-4 font-medium text-white after:h-12 after:absolute after:bg-primary  after:duration-300 after:transition-all after:left-[19.25rem] after:rounded-l-md hover:text-white hover:cursor-pointer transition-all `}
+                : 'px-7 after:left-[4.74rem] after:w-1 '
+            } ${
+              active == 'overview' ? 'text-white after:bg-primary' : ''
+            }  w-full  h-12 items-center flex gap-4 font-medium  after:h-12 after:absolute   after:duration-300 after:transition-all after:left-[19.25rem] after:rounded-l-md hover:text-white hover:cursor-pointer transition-all `}
           >
             <span>
               <TbApiApp className="text-2xl" />
@@ -72,9 +77,12 @@ export const Sidebar = () => {
             </span>
           </li>
           <li
+            onClick={(e) => setActive('activity')}
             className={` ${
-              isOpen ? 'px-16 ' : 'px-7'
-            } w-full  h-12 items-center flex gap-4 font-medium text-neutral-500 after:w-3 after:h-12 after:absolute after:left-[19.25rem] after:rounded-l-md hover:text-white hover:cursor-pointer transition-all `}
+              isOpen ? 'px-16 ' : 'px-7 after:left-[4.74rem] after:w-1'
+            } ${
+              active == 'activity' ? 'text-white after:bg-primary' : ''
+            } w-full  h-12 items-center flex gap-4 font-medium text-neutral-500 after:w-3 after:h-12 after:absolute after:left-[19.25rem] after:rounded-l-md hover:text-white hover:cursor-pointer transition-all after:duration-300`}
           >
             <span>
               <TbActivity className="text-2xl" />
@@ -88,9 +96,12 @@ export const Sidebar = () => {
             </span>
           </li>
           <li
+            onClick={(e) => setActive('courses')}
             className={` ${
-              isOpen ? 'px-16 ' : 'px-7'
-            } w-full  h-12 items-center flex gap-4 font-medium text-neutral-500 after:w-3 after:h-12 after:absolute after:left-[19.25rem] after:rounded-l-md hover:text-white hover:cursor-pointer transition-all `}
+              isOpen ? 'px-16 ' : 'px-7 after:left-[4.74rem] after:w-1'
+            } ${
+              active == 'courses' ? 'text-white after:bg-primary' : ''
+            } w-full  h-12 items-center flex gap-4 font-medium text-neutral-500 after:w-3 after:h-12 after:absolute after:left-[19.25rem] after:rounded-l-md hover:text-white hover:cursor-pointer transition-all after:duration-300`}
           >
             <span>
               <MdPlayLesson className="text-2xl" />
@@ -104,9 +115,12 @@ export const Sidebar = () => {
             </span>
           </li>
           <li
+            onClick={(e) => setActive('managers')}
             className={` ${
-              isOpen ? 'px-16 ' : 'px-7'
-            } w-full  h-12 items-center flex gap-4 font-medium text-neutral-500 after:w-3 after:h-12 after:absolute after:left-[19.25rem] after:rounded-l-md hover:text-white hover:cursor-pointer transition-all`}
+              isOpen ? 'px-16 ' : 'px-7 after:left-[4.74rem] after:w-1'
+            } ${
+              active == 'managers' ? 'text-white after:bg-primary' : ''
+            } w-full  h-12 items-center flex gap-4 font-medium text-neutral-500 after:w-3 after:h-12 after:absolute after:left-[19.25rem] after:rounded-l-md hover:text-white hover:cursor-pointer transition-all after:duration-300`}
           >
             <span>
               <FaUserTag className="text-2xl" />
@@ -120,9 +134,12 @@ export const Sidebar = () => {
             </span>
           </li>
           <li
+            onClick={(e) => setActive('calendar')}
             className={` ${
-              isOpen ? 'px-16 ' : 'px-7'
-            } w-full  h-12 items-center flex gap-4 font-medium text-neutral-500 after:w-3 after:h-12 after:absolute after:left-[19.25rem] after:rounded-l-md hover:text-white hover:cursor-pointer transition-all `}
+              isOpen ? 'px-16 ' : 'px-7 after:left-[4.74rem] after:w-1'
+            } ${
+              active == 'calendar' ? 'text-white after:bg-primary' : ''
+            } w-full  h-12 items-center flex gap-4 font-medium text-neutral-500 after:w-3 after:h-12 after:absolute after:left-[19.25rem] after:rounded-l-md hover:text-white hover:cursor-pointer transition-all after:duration-300`}
           >
             <span>
               <BsFillCalendarWeekFill className="text-2xl" />
@@ -136,9 +153,12 @@ export const Sidebar = () => {
             </span>
           </li>
           <li
+            onClick={(e) => setActive('settings')}
             className={` ${
-              isOpen ? 'px-16 ' : 'px-7'
-            } w-full  h-12 items-center flex gap-4 font-medium text-neutral-500 after:w-3 after:h-12 after:absolute after:left-[19.25rem] after:rounded-l-md hover:text-white hover:cursor-pointer transition-all `}
+              isOpen ? 'px-16 ' : 'px-7 after:left-[4.74rem] after:w-1'
+            } ${
+              active == 'settings' ? 'text-white after:bg-primary' : ''
+            } w-full  h-12 items-center flex gap-4 font-medium text-neutral-500 after:w-3 after:h-12 after:absolute after:left-[19.25rem] after:rounded-l-md hover:text-white hover:cursor-pointer transition-all after:duration-300`}
           >
             <span>
               <IoMdSettings className="text-2xl transition-colors" />
@@ -154,7 +174,11 @@ export const Sidebar = () => {
         </ul>
       </div>
 
-      <div className="flex items-center gap-4">
+      <div
+        className={` ${
+          isOpen ? 'w-full' : 'w-0 hidden'
+        } flex justify-center items-center gap-4 `}
+      >
         <Avatar className="bg-neutral-800 rounded-full w-14" src="" />
         <div className="flex flex-col">
           <h1 className="text-base font-bold text-white font-inter">
@@ -166,6 +190,11 @@ export const Sidebar = () => {
           <MdOutlineExitToApp className="text-2xl group-hover:text-red-500 transition-colors" />
         </button>
       </div>
+      <button
+        className={` ${isOpen ? ' hidden' : ''} mb-4 bg-neutral-800 group`}
+      >
+        <MdOutlineExitToApp className="text-2xl group-hover:text-red-500 transition-colors" />
+      </button>
     </aside>
   )
 }
