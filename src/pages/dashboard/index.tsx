@@ -1,15 +1,17 @@
 import Head from 'next/head'
-import { useState } from 'react'
-import { OptionsDashboard } from '../../components/options'
+import { Sidebar } from '../../components/aside'
 
-export default function Dash() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+export default function Dashboard() {
   return (
-    <>
+    <main className="flex gap-0">
       <Head>
         <title>Orion - Dashboard</title>
       </Head>
-      <OptionsDashboard />
-    </>
+      <Sidebar />
+      <div className="w-full  h-screen bg-dark text-9xl text-white">123</div>
+      <div className="w-[35rem] h-screen bg-dark border-l-2 border-neutral-900">
+        123
+      </div>
+    </main>
   )
 }

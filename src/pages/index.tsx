@@ -1,13 +1,12 @@
 import Head from 'next/head'
-import { SignIn } from '../components/signIn/signin'
+import { LayoutCenter } from '../components/layout/center'
 
 export default function Home() {
   return (
-    <main className="w-screen h-screen flex items-center justify-center">
+    <LayoutCenter>
       <Head>
         <title>Orion</title>
       </Head>
-      <SignIn />
-    </main>
+    </LayoutCenter>
   )
 }

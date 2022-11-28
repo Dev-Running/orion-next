@@ -1,15 +1,13 @@
 import { Head, Html, Main, NextScript } from 'next/document'
-import { Header } from '../components/header'
 
 export default function Document() {
   return (
     <Html>
-      <Head />
+      <Head>
+        <link rel="icon" type="image/png" href="/logo-dark.png" />
+      </Head>
       <body>
-        <Header />
-        <main className="flex w-screen flex-col justify-center items-center min-h-[calc(100vh-5rem)]">
-          <Main />
-        </main>
+        <Main />
         <NextScript />
       </body>
     </Html>
