@@ -1,12 +1,57 @@
 import { Stat, StatArrow } from '@chakra-ui/react'
-import { useContext } from 'react'
+import * as echarts from 'echarts'
+import { useContext, useEffect } from 'react'
 import { FaUser } from 'react-icons/fa'
-import { MdPlayLesson } from 'react-icons/md'
+import { MdAttachMoney, MdPlayLesson } from 'react-icons/md'
 import { TbActivity } from 'react-icons/tb'
 import { MainContext } from '../../../contexts/main'
-
 export const Overview = ({ pendingActivities }) => {
   const { isOpen, setIsOpen } = useContext(MainContext)
+
+  useEffect(() => {
+    var chartDom = document.getElementById('main')
+    var myChart = echarts.init(chartDom, null, {
+      renderer: 'svg',
+    })
+    var option: echarts.EChartsOption
+
+    option = {
+      grid: { show: false, tooltip: { show: false } },
+      xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        minorTick: { show: false },
+        axisTick: { show: false, lineStyle: { width: 0 } },
+        axisLine: { show: false },
+        splitLine: { show: false },
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      },
+      yAxis: {
+        axisTick: { show: false },
+        type: 'value',
+        axisLine: {
+          lineStyle: {},
+        },
+      },
+      series: [
+        {
+          data: [820, 932, 901, 934, 1290, 1330, 1320],
+          type: 'line',
+
+          areaStyle: {
+            color: '#212121',
+            shadowBlur: 30,
+            origin: 'start',
+          },
+          color: '#fff',
+        },
+      ],
+    }
+    myChart.resize()
+    myChart.setOption(option)
+    myChart.renderToSVGString()
+  }, [])
+
   const monthNames = [
     'January',
     'February',
@@ -70,8 +115,14 @@ export const Overview = ({ pendingActivities }) => {
           </p>
         </div>
         <div className="flex h-52 w-60 flex-col rounded-md bg-gradient-to-br from-neutral-600 to-neutral-900 drop-shadow-xl transition-all duration-300  hover:scale-105 hover:cursor-pointer">
-          <div className="flex h-full w-full flex-col items-center justify-center  text-4xl font-bold">
-            <Stat className="-mt-6 flex h-full w-full flex-row items-center justify-center ">
+          <span className="flex items-center gap-2 px-4 pt-5 ">
+            <div className="flex h-7 w-7 items-center justify-center rounded-md bg-neutral-100 bg-opacity-50">
+              <MdAttachMoney className="text-xl" />
+            </div>
+            <h1 className="mt-1 font-raj font-bold">Receipt of</h1>
+          </span>
+          <div className="-mt-11 flex h-full w-full flex-col items-center justify-center  text-4xl font-bold">
+            <Stat className="-mt-6 -ml-5 flex flex-row items-center justify-center  ">
               <StatArrow className="text-green-600 " type="increase" />
               <a className="font-raj font-medium">R$ 0,00</a>
             </Stat>

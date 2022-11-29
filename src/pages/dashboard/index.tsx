@@ -1,60 +1,23 @@
-import { Avatar, AvatarGroup } from '@chakra-ui/react'
-import * as echarts from 'echarts'
 import Head from 'next/head'
-import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 import { FiSearch } from 'react-icons/fi'
 import { MdNotifications } from 'react-icons/md'
 import { Sidebar } from '../../components/aside'
+import { Activities } from '../../components/main/activities'
+import { Calendar } from '../../components/main/calendar'
+import { Courses } from '../../components/main/courses'
+import { Managers } from '../../components/main/managers'
 import { Overview } from '../../components/main/overview'
+import { Settings } from '../../components/main/settings'
+import { Tasks } from '../../components/main/tasks'
+import { RightSidebarManagers } from '../../components/sidebarRight/managers'
 import { RightSidebarRecents } from '../../components/sidebarRight/recent'
+import { RightSidebarTasks } from '../../components/sidebarRight/tasks'
+import { MainContext } from '../../contexts/main'
 
 export default function Dashboard() {
   const [focus, setFocus] = useState(false)
-
-  useEffect(() => {
-    var chartDom = document.getElementById('main')
-    var myChart = echarts.init(chartDom, null, {
-      renderer: 'svg',
-    })
-    var option: echarts.EChartsOption
-
-    option = {
-      grid: { show: false, tooltip: { show: false } },
-      xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        minorTick: { show: false },
-        axisTick: { show: false, lineStyle: { width: 0 } },
-        axisLine: { show: false },
-        splitLine: { show: false },
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-      },
-      yAxis: {
-        axisTick: { show: false },
-        type: 'value',
-        axisLine: {
-          lineStyle: {},
-        },
-      },
-      series: [
-        {
-          data: [820, 932, 901, 934, 1290, 1330, 1320],
-          type: 'line',
-
-          areaStyle: {
-            color: '#212121',
-            shadowBlur: 30,
-            origin: 'start',
-          },
-          color: '#fff',
-        },
-      ],
-    }
-    myChart.resize()
-    myChart.setOption(option)
-    myChart.renderToSVGString()
-  }, [])
+  const { section } = useContext(MainContext)
 
   const pendingActivities = 0
 
@@ -88,62 +51,29 @@ export default function Dashboard() {
             <div className="absolute -mt-3 ml-3 h-2 w-2 rounded-full bg-red-500"></div>
           </button>
         </section>
-        <Overview pendingActivities={pendingActivities} />
+        {section == 'overview' ? (
+          <Overview pendingActivities={pendingActivities} />
+        ) : section == 'managers' ? (
+          <Managers />
+        ) : section == 'tasks' ? (
+          <Tasks />
+        ) : section == 'courses' ? (
+          <Courses />
+        ) : section == 'settings' ? (
+          <Settings />
+        ) : section == 'calendar' ? (
+          <Calendar />
+        ) : section == 'activities' ? (
+          <Activities />
+        ) : (
+          <>NOT FOUND</>
+        )}
       </div>
-      <div className="min-h-full">
-        <div className="sticky top-0 flex min-h-screen w-[23rem] min-w-[23rem] flex-col gap-8 border-l-2  border-neutral-900  bg-dark px-4 pt-10 text-neutral-300">
+      <div className=" min-h-screen ">
+        <div className="sticky top-0 box-border flex   max-h-screen min-h-screen w-[21rem] min-w-[21rem] flex-col gap-8 overflow-scroll border-l-2  border-neutral-900  bg-dark px-4 pt-10 text-neutral-300">
           <RightSidebarRecents />
-          <section>
-            <h1 className="mb-4 font-medium ">Managers</h1>
-            <AvatarGroup
-              size="md"
-              max={8}
-              color="#212121"
-              borderColor="#212121"
-            >
-              <Avatar
-                src=""
-                className="transition-all duration-300  hover:-translate-y-2"
-              />
-              <Avatar
-                src=""
-                className="transition-all duration-300  hover:-translate-y-2"
-              />
-              <Avatar
-                src=""
-                className="transition-all duration-300  hover:-translate-y-2"
-              />
-              <Avatar
-                src=""
-                className="transition-all duration-300  hover:-translate-y-2"
-              />
-              <Avatar
-                src=""
-                className="transition-all duration-300  hover:-translate-y-2"
-              />
-              <Avatar
-                src=""
-                className="transition-all duration-300  hover:-translate-y-2"
-              />
-              <Avatar
-                src=""
-                className="transition-all duration-300  hover:-translate-y-2"
-              />
-              <Avatar
-                src=""
-                className="transition-all duration-300  hover:-translate-y-2"
-              />
-              <Avatar
-                src=""
-                className="transition-all duration-300  hover:-translate-y-2"
-              />
-            </AvatarGroup>
-            <div className="mt-4 flex w-full justify-end">
-              <Link href="" className="text-xs text-primary hover:opacity-80">
-                See all
-              </Link>
-            </div>
-          </section>
+          <RightSidebarManagers />
+          <RightSidebarTasks />
         </div>
       </div>
     </main>

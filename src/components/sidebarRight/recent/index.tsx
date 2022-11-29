@@ -6,26 +6,26 @@ export const RightSidebarRecents = () => {
     <section className="flex flex-col gap-2">
       <h1 className="mb-4 font-medium ">Recent activities</h1>
       <button className="flex h-14 w-full items-center gap-2 rounded-md px-2   hover:cursor-pointer hover:bg-neutral-900">
-        <Avatar src="" className="h-10 w-10 rounded-full bg-neutral-800" />
-        <p className="  w-64  overflow-hidden text-ellipsis  text-xs ">
+        <Avatar src="" className="h-10 w-10 rounded-full   bg-neutral-800" />
+        <p className=" w-64 overflow-hidden truncate text-ellipsis  text-xs ">
           <strong>Lucas Laurentino</strong> published a new course.
         </p>
       </button>
       <button className="flex h-14 w-full items-center gap-2 rounded-md px-2   hover:cursor-pointer hover:bg-neutral-900">
         <Avatar src="" className="h-10 w-10 rounded-full bg-neutral-800" />
-        <p className="  w-64  overflow-hidden text-ellipsis  text-xs ">
+        <p className="  w-64  overflow-hidden truncate text-ellipsis  text-xs ">
           <strong>Lucas Laurentino</strong> published a new course.
         </p>
       </button>
       <button className="flex h-14 w-full items-center gap-2 rounded-md px-2   hover:cursor-pointer hover:bg-neutral-900">
         <Avatar src="" className="h-10 w-10 rounded-full bg-neutral-800" />
-        <p className="  w-64  overflow-hidden text-ellipsis  text-xs ">
+        <p className="  w-64  overflow-hidden truncate  text-ellipsis  text-xs ">
           <strong>Lucas Laurentino</strong> published a new course.
         </p>
       </button>
       <button className="flex h-14 w-full items-center gap-2 rounded-md px-2   hover:cursor-pointer hover:bg-neutral-900">
         <Avatar src="" className="h-10 w-10 rounded-full bg-neutral-800" />
-        <p className="  w-64  overflow-hidden text-ellipsis  text-xs ">
+        <p className="  w-64  overflow-hidden truncate text-ellipsis  text-xs ">
           <strong>Lucas Laurentino</strong> published a new course.
         </p>
       </button>
