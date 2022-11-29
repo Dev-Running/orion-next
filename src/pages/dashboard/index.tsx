@@ -70,7 +70,7 @@ export default function Dashboard() {
         )}
       </div>
       <div className=" min-h-screen ">
-        <div className="sticky top-0 box-border flex   max-h-screen min-h-screen w-[21rem] min-w-[21rem] flex-col gap-8 overflow-scroll border-l-2  border-neutral-900  bg-dark px-4 pt-10 text-neutral-300">
+        <div className="sticky  top-0  box-border flex max-h-[101vh] min-h-screen w-[21rem] min-w-[21rem] flex-col gap-8 overflow-scroll border-l-2 border-neutral-900  bg-dark  px-4 py-9 text-neutral-300">
           <RightSidebarRecents />
           <RightSidebarManagers />
           <RightSidebarTasks />

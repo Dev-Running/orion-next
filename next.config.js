@@ -4,17 +4,17 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: [
-      "blog.sesisenai.org.br",
-      "github.com",
-      "cdn.freebiesupply.com",
-      "www.returngis.net",
-      "localhost",
-      "img.freepik.com",
-      "avatars.githubusercontent.com",
-      "lh3.googleusercontent.com",
-      "upload.wikimedia.org",
+      'blog.sesisenai.org.br',
+      'github.com',
+      'cdn.freebiesupply.com',
+      'www.returngis.net',
+      'localhost',
+      'img.freepik.com',
+      'avatars.githubusercontent.com',
+      'lh3.googleusercontent.com',
+      'upload.wikimedia.org',
     ],
   },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig

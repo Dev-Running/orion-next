@@ -7,6 +7,7 @@ export default function Home() {
       <Head>
         <title>Orion</title>
       </Head>
+      <h1>123</h1>
     </LayoutCenter>
   )
 }
