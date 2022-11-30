@@ -2,7 +2,7 @@ import { Avatar } from '@chakra-ui/react'
 
 export const ManagerLI = () => {
   return (
-    <li className="mb-4 flex h-16 w-full items-center justify-between px-10 text-sm font-medium hover:cursor-pointer hover:bg-dark/20">
+    <li className="mb-4 flex h-16 w-full items-center justify-between px-10 text-sm font-medium text-neutral-300 hover:cursor-pointer hover:bg-dark/20">
       <Avatar className="flex w-48 items-center justify-start" />
       <span className="flex w-40 items-center justify-start">
         Lucas Laurentino

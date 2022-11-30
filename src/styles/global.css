@@ -34,3 +34,12 @@ html {
 #tasksContainer::-webkit-scrollbar-thumb {
         @apply bg-transparent;
 }
+
+/* 
+.p-editor-toolbar {
+        @apply bg-dark border-none;
+}
+
+.ql-align-center {
+        @apply text-center bg-transparent;
+} */
