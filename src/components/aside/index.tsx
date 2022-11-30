@@ -8,7 +8,29 @@ import { TbActivity, TbApiApp } from 'react-icons/tb'
 import { MainContext } from '../../contexts/main'
 
 export const Sidebar = () => {
-  const { isOpen, setIsOpen, section, setSection } = useContext(MainContext)
+  const {
+    isOpen,
+    setIsOpen,
+    section,
+    setSection: sc,
+    setClose,
+    setOpening,
+  } = useContext(MainContext)
+
+  function setSection(section: string) {
+    setClose(true)
+    setOpening(true)
+    setTimeout(() => {
+      sc(section)
+      setClose(false)
+      setTimeout(() => {
+        setTimeout(() => {
+          setOpening(false)
+        }, 200)
+      }, 200)
+    }, 200)
+  }
+
   return (
     <div className="min-h-screen">
       <aside

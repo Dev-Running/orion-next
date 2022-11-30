@@ -5,8 +5,8 @@ import { FaUser } from 'react-icons/fa'
 import { MdAttachMoney, MdPlayLesson } from 'react-icons/md'
 import { TbActivity } from 'react-icons/tb'
 import { MainContext } from '../../../contexts/main'
-export const Overview = ({ pendingActivities }) => {
-  const { isOpen, setIsOpen } = useContext(MainContext)
+export const Overview = ({ pendingTasks }) => {
+  const { isOpen, setIsOpen, close, opening, section } = useContext(MainContext)
 
   useEffect(() => {
     var chartDom = document.getElementById('main')
@@ -70,9 +70,17 @@ export const Overview = ({ pendingActivities }) => {
   const d = new Date()
   return (
     <section
-      className={`${
-        isOpen ? 'px-6' : 'px-32'
-      } flex flex-col gap-14 pt-10 transition-all duration-300 `}
+      className={`${isOpen ? 'px-6' : 'px-32'} ${
+        close
+          ? 'opacity-0'
+          : opening
+          ? 'opacity-[0.1%]'
+          : opening && section === 'overview'
+          ? 'opacity-50'
+          : !opening && section === 'overview'
+          ? 'opacity-100'
+          : 'opacity-0'
+      } flex  flex-col gap-14 pt-9 opacity-0 transition-all duration-300 `}
     >
       <div className="flex flex-wrap justify-between">
         <div className="flex h-52 w-60 flex-col rounded-md bg-gradient-to-br from-blue-600 to-blue-900 drop-shadow-xl transition-all duration-300 hover:scale-105 hover:cursor-pointer">
@@ -99,8 +107,10 @@ export const Overview = ({ pendingActivities }) => {
         </div>
         <div
           className={`${
-            pendingActivities == 0
+            pendingTasks == 0
               ? 'from-green-600 to-green-900'
+              : pendingTasks > 0 && pendingTasks < 5
+              ? 'from-indigo-500 to-indigo-900'
               : 'from-red-600 to-red-900'
           }  flex h-52 w-60 flex-col rounded-md bg-gradient-to-br  drop-shadow-xl transition-all duration-300 hover:scale-105 hover:cursor-pointer`}
         >
@@ -108,10 +118,10 @@ export const Overview = ({ pendingActivities }) => {
             <div className="flex h-7 w-7 items-center justify-center rounded-md bg-neutral-100 bg-opacity-50">
               <TbActivity className="text-xl" />
             </div>
-            <h1 className="mt-1 font-raj font-bold">Pending activities</h1>
+            <h1 className="mt-1 font-raj font-bold">Pending tasks</h1>
           </span>
           <p className="flex h-full w-full items-center justify-center pb-10 text-7xl font-bold">
-            0
+            {pendingTasks}
           </p>
         </div>
         <div className="flex h-52 w-60 flex-col rounded-md bg-gradient-to-br from-neutral-600 to-neutral-900 drop-shadow-xl transition-all duration-300  hover:scale-105 hover:cursor-pointer">
@@ -133,7 +143,7 @@ export const Overview = ({ pendingActivities }) => {
         </div>
       </div>
       <div>
-        <h1 className="ml-10 text-2xl font-medium">Total access</h1>
+        <h1 className="ml-10 -mb-24 font-medium">Total access</h1>
       </div>
       <div id="main" className="h-[30rem] "></div>
     </section>

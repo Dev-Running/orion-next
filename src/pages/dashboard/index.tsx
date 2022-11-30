@@ -4,7 +4,7 @@ import { FiSearch } from 'react-icons/fi'
 import { MdNotifications } from 'react-icons/md'
 import { Sidebar } from '../../components/aside'
 import { Activities } from '../../components/main/activities'
-import { Calendar } from '../../components/main/calendar'
+import { CalendarMain } from '../../components/main/calendar'
 import { Courses } from '../../components/main/courses'
 import { Managers } from '../../components/main/managers'
 import { Overview } from '../../components/main/overview'
@@ -19,7 +19,7 @@ export default function Dashboard() {
   const [focus, setFocus] = useState(false)
   const { section } = useContext(MainContext)
 
-  const pendingActivities = 0
+  const pendingTasks = 4
 
   return (
     <main className="flex gap-0">
@@ -52,7 +52,7 @@ export default function Dashboard() {
           </button>
         </section>
         {section == 'overview' ? (
-          <Overview pendingActivities={pendingActivities} />
+          <Overview pendingTasks={pendingTasks} />
         ) : section == 'managers' ? (
           <Managers />
         ) : section == 'tasks' ? (
@@ -62,7 +62,7 @@ export default function Dashboard() {
         ) : section == 'settings' ? (
           <Settings />
         ) : section == 'calendar' ? (
-          <Calendar />
+          <CalendarMain />
         ) : section == 'activities' ? (
           <Activities />
         ) : (
@@ -70,7 +70,7 @@ export default function Dashboard() {
         )}
       </div>
       <div className=" min-h-screen ">
-        <div className="sticky  top-0  box-border flex max-h-[101vh] min-h-screen w-[21rem] min-w-[21rem] flex-col gap-8 overflow-scroll border-l-2 border-neutral-900  bg-dark  px-4 py-9 text-neutral-300">
+        <div className="sticky  top-0  box-border flex max-h-[90%] min-h-screen w-[21rem] min-w-[21rem] flex-col gap-8 overflow-hidden border-l-2 border-neutral-900  bg-dark  px-4 py-9 text-neutral-300">
           <RightSidebarRecents />
           <RightSidebarManagers />
           <RightSidebarTasks />
