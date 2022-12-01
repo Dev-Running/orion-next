@@ -2,7 +2,7 @@ import { InputText } from 'primereact/inputtext'
 
 export const ContentModalNewManager = () => {
   return (
-    <div className="w-2/3">
+    <div className=" w-2/3">
       <div className="flex w-full  justify-center gap-5 ">
         <span className="p-float-label ">
           <InputText

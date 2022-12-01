@@ -15,6 +15,10 @@ module.exports = {
         dark: '#111111',
         primary: '#FFB703',
       },
+      animation: {
+        contentShow: 'contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
+        overlayShow: 'overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
+      },
     },
   },
   plugins: [],
